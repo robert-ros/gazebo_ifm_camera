@@ -1,0 +1,3 @@
+[submodule "gazebo_pallet_tracking"]
+	path = gazebo_pallet_tracking
+	url = https://github.com/robert-ros/gazebo_pallet_tracking
