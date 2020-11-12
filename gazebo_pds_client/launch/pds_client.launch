@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="robot_id" default="robot" />
+    <arg name="camera_topic" default="robot/rear_camera/rgb/image_raw" />
+    <arg name="camera_depth_topic" default="robot/rear_camera/depth/points" /> 
+
+    <!-- Launch pallet algorithm, it uses a robot as namespace-->
+    <include file="$(find gazebo_pallet_tracking)/launch/pallet_tracking.launch">
+        <param name="camera_topic" value="$(arg camera_topic)" /> 
+        <param name="camera_depth_topic" value="$(arg camera_depth_topic)" /> 
+    </include>
+
+   
+    <group ns="$(arg robot_id)">
+
+        <!-- Launch gazebo ifm camera-->
+        <node pkg="gazebo_pds_client" type="gazebo_pds_client.py" name="gazebo_pds_client_node" output="screen"/>
+
+    </group>
+
+</launch>
